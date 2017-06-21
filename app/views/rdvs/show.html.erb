@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @rdv.name %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @rdv.phone_number %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @rdv.time %>
+</p>
+
+<%= link_to 'Edit', edit_rdv_path(@rdv) %> |
+<%= link_to 'Back', rdvs_path %>

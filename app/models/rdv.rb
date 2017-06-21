@@ -1,0 +1,2 @@
+class Rdv < ApplicationRecord
+end
