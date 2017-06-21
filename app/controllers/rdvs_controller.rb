@@ -1,6 +1,7 @@
 class RdvsController < ApplicationController
   before_action :set_rdv, only: [:show, :edit, :update, :destroy]
-
+  require 'active_support'
+  require 'active_support/time'
   # GET /rdvs
   # GET /rdvs.json
    def index
