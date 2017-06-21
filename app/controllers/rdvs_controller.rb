@@ -3,8 +3,11 @@ class RdvsController < ApplicationController
 
   # GET /rdvs
   # GET /rdvs.json
-  def index
-    @rdvs = Rdv.all
+   def index
+    @appointments = Appointment.all
+    if @appointments.length == 0
+      flash[:alert] = "You have no appointments. Create one now to get started."
+    end
   end
 
   # GET /rdvs/1
@@ -21,18 +24,20 @@ class RdvsController < ApplicationController
   def edit
   end
 
-  # POST /rdvs
-  # POST /rdvs.json
+
+  # POST /appointments
+  # POST /appointments.json
   def create
-    @rdv = Rdv.new(rdv_params)
+    Time.zone = appointment_params[:time_zone]
+    @appointment = Appointment.new(appointment_params)
 
     respond_to do |format|
-      if @rdv.save
-        format.html { redirect_to @rdv, notice: 'Rdv was successfully created.' }
-        format.json { render :show, status: :created, location: @rdv }
+      if @appointment.save
+        format.html { redirect_to @appointment, notice: 'Appointment was successfully created.' }
+        format.json { render :show, status: :created, location: @appointment }
       else
         format.html { render :new }
-        format.json { render json: @rdv.errors, status: :unprocessable_entity }
+        format.json { render json: @appointment.errors, status: :unprocessable_entity }
       end
     end
   end
